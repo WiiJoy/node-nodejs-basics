@@ -1,5 +1,17 @@
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { stdout } from 'process'
+
 const read = async () => {
-    // Write your code here 
+    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const fileToRead = path.join(__dirname, 'files', 'fileToRead.txt')
+    const readStream = fs.createReadStream(fileToRead)
+
+    // readStream.on('data', (chunk) => {
+    //     process.stdout.write(chunk)
+    // })
+    readStream.pipe(stdout)
 };
 
 await read();
