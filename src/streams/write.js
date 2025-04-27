@@ -1,11 +1,11 @@
-import fs from 'fs'
-import path from 'path'
-import { stdin } from 'process'
+import { createWriteStream } from 'node:fs'
+import path from 'node:path'
+import { stdin } from 'node:process'
 
 const write = async () => {
     const __dirname = import.meta.dirname
     const fileToWrite = path.join(__dirname, 'files', 'fileToWrite.txt')
-    const writeStream = fs.createWriteStream(fileToWrite)
+    const writeStream = createWriteStream(fileToWrite)
 
     stdin.pipe(writeStream)
 };

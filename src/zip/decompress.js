@@ -1,7 +1,7 @@
-import fs from 'fs'
-import path from 'path'
-import { createUnzip } from 'zlib'
-import { pipeline } from 'stream'
+import { createReadStream, createWriteStream } from 'node:fs'
+import path from 'node:path'
+import { createUnzip } from 'node:zlib'
+import { pipeline } from 'node:stream/promises'
 
 const decompress = async () => {
     const __dirname = import.meta.dirname
@@ -9,8 +9,8 @@ const decompress = async () => {
     const decompressedFile = path.join(__dirname, 'files', 'fileToCompress.txt')
     const unzip = createUnzip()
 
-    const source = fs.createReadStream(archiveToDecompress)
-    const destination = fs.createWriteStream(decompressedFile)
+    const source = createReadStream(archiveToDecompress)
+    const destination = createWriteStream(decompressedFile)
 
     pipeline(source, unzip, destination, (err) => {
         if (err) console.error(err)

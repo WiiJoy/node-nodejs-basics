@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { access, rename, constants } from 'fs';
 import path from 'path';
 
 const rename = async () => {
@@ -6,9 +6,9 @@ const rename = async () => {
     const wrongName = path.join(__dirname, 'files', 'wrongFilename.txt')
     const properName = path.join(__dirname, 'files', 'properFilename.md')
 
-    fs.access(properName, fs.constants.F_OK, (err) => {
+    access(properName, constants.F_OK, (err) => {
         if (err) {
-            fs.rename(wrongName, properName, (err) => {
+            rename(wrongName, properName, (err) => {
                 if (err) throw new Error('FS operation failed')
             })
         } else {

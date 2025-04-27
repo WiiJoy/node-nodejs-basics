@@ -1,13 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import { createHash } from 'crypto'
+import { createReadStream } from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto'
 
 const calculateHash = async () => {
     const __dirname = import.meta.dirname
     const fileToRead = path.join(__dirname, 'files', 'fileToCalculateHashFor.txt')
     const hash = createHash('sha256')
 
-    const readStream = fs.createReadStream(fileToRead)
+    const readStream = createReadStream(fileToRead)
 
     readStream.on('data', (chunk) => {
         hash.update(chunk)
