@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { stdout } from 'process'
+import { EOL } from 'os'
 
 const read = async () => {
     const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -11,7 +12,7 @@ const read = async () => {
     readStream.pipe(stdout)
 
     readStream.on('end', () => {
-        stdout.write('\n')
+        stdout.write(EOL)
     })
 };
 
