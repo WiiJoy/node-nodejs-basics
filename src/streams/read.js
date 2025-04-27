@@ -8,13 +8,11 @@ const read = async () => {
     const fileToRead = path.join(__dirname, 'files', 'fileToRead.txt')
     const readStream = fs.createReadStream(fileToRead)
 
-    /**
-     * To Reviewers:
-     * `npm run streams:read` does't save the result in console
-     * use the command `node src/streams/read.js`
-     * https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/cross-check-manual.md#how-to-check-students-project
-     */
     readStream.pipe(stdout)
+
+    readStream.on('end', () => {
+        stdout.write('\n')
+    })
 };
 
 await read();
