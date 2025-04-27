@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url'
 
 const remove = async () => {
-    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const __dirname = import.meta.dirname
     const fileToRemove = path.join(__dirname, 'files', 'fileToRemove.txt')
 
     fs.rm(fileToRemove, (err) => {

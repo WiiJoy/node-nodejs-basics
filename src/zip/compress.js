@@ -1,11 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
 import { createGzip } from 'zlib'
 import { pipeline } from 'stream'
 
 const compress = async () => {
-    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const __dirname = import.meta.dirname
     const fileToCompress = path.join(__dirname, 'files', 'fileToCompress.txt')
     const archiveFile = path.join(__dirname, 'files', 'archive.gz')
     const gzip = createGzip()

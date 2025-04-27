@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url'
 
 const list = async () => {
-    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const __dirname = import.meta.dirname
     const dirPath = path.join(__dirname, 'files')
 
     fs.readdir(dirPath, (err, files) => {

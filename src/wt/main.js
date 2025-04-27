@@ -1,10 +1,9 @@
 import path from 'path'
-import { fileURLToPath } from 'url'
 import { availableParallelism } from 'os'
 import { Worker } from 'worker_threads'
 
 const performCalculations = async () => {
-    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const __dirname = import.meta.dirname
     const worker = path.join(__dirname, 'worker.js')
     const allWorkers = []
     const result = []

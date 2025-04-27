@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url'
 
 const rename = async () => {
-    const __dirname = fileURLToPath(new URL('.', import.meta.url))
+    const __dirname = import.meta.dirname
     const wrongName = path.join(__dirname, 'files', 'wrongFilename.txt')
     const properName = path.join(__dirname, 'files', 'properFilename.md')
 
