@@ -1,4 +1,4 @@
-import { access, rename, constants } from 'fs';
+import { access, rename as rn, constants } from 'fs';
 import path from 'path';
 
 const rename = async () => {
@@ -8,7 +8,7 @@ const rename = async () => {
 
     access(properName, constants.F_OK, (err) => {
         if (err) {
-            rename(wrongName, properName, (err) => {
+            rn(wrongName, properName, (err) => {
                 if (err) throw new Error('FS operation failed')
             })
         } else {

@@ -1,7 +1,7 @@
 import { createReadStream, createWriteStream } from 'node:fs'
 import path from 'node:path'
 import { createUnzip } from 'node:zlib'
-import { pipeline } from 'node:stream/promises'
+import { pipeline } from 'node:stream'
 
 const decompress = async () => {
     const __dirname = import.meta.dirname
